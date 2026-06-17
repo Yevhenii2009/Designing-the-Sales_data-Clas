@@ -24,12 +24,18 @@
     <ClCompile Include="BankMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BankSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BankAccount.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BankMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BankSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

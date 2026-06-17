@@ -41,9 +41,11 @@ void BankMenu::run(BankAccount& account)
             cin >> amount;
 
             account.deposit(amount);
-            cout << "Now your balance is "
-                 << account.getBalance() 
-                 << endl;
+            cout <<  "Now " 
+                << account.getOwner() 
+                << " balance is "  
+                << account.getBalance()
+                << endl;
         }
 
 
@@ -55,7 +57,9 @@ void BankMenu::run(BankAccount& account)
             cin >> amount;
 
             account.withdraw(amount);
-            cout << "Now your balance is "
+            cout << "Now " 
+                << account.getOwner() 
+                << " balance is "
                 << account.getBalance()
                 << endl;
         }
