@@ -1,0 +1,44 @@
+#include "BankAccount.h"
+#include <iostream>
+
+using namespace std;
+
+BankAccount::BankAccount(string name, double startBalance)
+{
+    owner = name;
+    balance = startBalance;
+}
+
+void BankAccount::deposit(double amount)
+{
+    balance += amount;
+}
+
+void BankAccount::withdraw(double amount)
+{
+    if (amount <= balance)
+    {
+        balance -= amount;
+    }
+    else
+    {
+        cout << "Not enough money!" << endl;
+    }
+}
+
+void BankAccount::printInfo() const
+{
+    cout << "Owner: " << owner
+        << "\nBalance: " << balance
+        << "\n\n";
+}
+
+double BankAccount::getBalance() const
+{
+    return balance;
+}
+
+string BankAccount::getOwner() const
+{
+    return owner;
+}
