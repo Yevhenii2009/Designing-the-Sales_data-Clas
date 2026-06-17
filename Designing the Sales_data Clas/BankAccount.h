@@ -20,3 +20,4 @@ public:
     double getBalance() const;
     std::string getOwner() const;
 };
+

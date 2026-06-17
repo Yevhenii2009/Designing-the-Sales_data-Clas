@@ -1,29 +1,32 @@
 #include <iostream>
+
 #include "BankAccount.h"
+#include "BankMenu.h"
 
 using namespace std;
 
+
 int main()
 {
-    BankAccount account("John", 1000);
+    string owner;
+    double startBalance;
 
-    account.printInfo();
 
-    account.deposit(500);
+    cout << "Enter owner name: ";
+    cin >> owner;
 
-    account.printInfo();
 
-    account.withdraw(300);
+    cout << "Enter starting balance: ";
+    cin >> startBalance;
 
-    account.printInfo();
 
-    cout << "Owner: "
-        << account.getOwner()
-        << endl;
+    BankAccount account(owner, startBalance);
 
-    cout << "Current balance: "
-        << account.getBalance()
-        << endl;
+
+    BankMenu menu;
+
+    menu.run(account);
+
 
     return 0;
 }
