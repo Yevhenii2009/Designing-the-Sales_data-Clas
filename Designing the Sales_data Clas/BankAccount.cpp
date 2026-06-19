@@ -11,18 +11,30 @@ BankAccount::BankAccount(string name, double startBalance)
 
 void BankAccount::deposit(double amount)
 {
+    if (amount <= 0)
+    {
+        cout << "Invalid amount!\n";
+        return;
+    }
+
     balance += amount;
 }
 
 void BankAccount::withdraw(double amount)
 {
+    if (amount <= 0)
+    {
+        cout << "Invalid amount!\n";
+        return;
+    }
+
     if (amount <= balance)
     {
         balance -= amount;
     }
     else
     {
-        cout << "Not enough money!" << endl;
+        cout << "Not enough money!\n";
     }
 }
 
@@ -42,4 +54,3 @@ string BankAccount::getOwner() const
 {
     return owner;
 }
-

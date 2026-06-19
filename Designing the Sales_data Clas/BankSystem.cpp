@@ -1,34 +1,32 @@
 #include "BankSystem.h"
+#include "InputUtils.h"
 #include <iostream>
 
 using namespace std;
-
 
 void BankSystem::createAccount()
 {
     string name;
     double balance;
 
-
     cout << "Enter owner name: ";
-    cin >> name;
-
+    inputValue(name);
 
     cout << "Enter starting balance: ";
-    cin >> balance;
+    inputValue(balance);
 
+    while (balance < 0)
+    {
+        cout << "Balance cannot be negative. Try again: ";
+        inputValue(balance);
+    }
 
-    BankAccount account(name, balance);
+    accounts.push_back(BankAccount(name, balance));
 
-    accounts.push_back(account);
-
-
-    currentAccount = accounts.size() - 1;
-
+    currentAccount = static_cast<int>(accounts.size()) - 1;
 
     cout << "Account created!\n";
 }
-
 
 void BankSystem::showAccounts()
 {
@@ -38,53 +36,53 @@ void BankSystem::showAccounts()
         return;
     }
 
-
     cout << "\n===== ACCOUNTS =====\n";
 
-
-    for (int i = 0; i < accounts.size(); i++)
+    for (int i = 0; i < static_cast<int>(accounts.size()); i++)
     {
         cout << i
             << ". "
             << accounts[i].getOwner()
-            << " avalible balance is "
+            << " available balance is "
             << accounts[i].getBalance()
             << endl;
     }
 }
 
-
 void BankSystem::selectAccount()
 {
-    int index;
-
+    if (accounts.empty())
+    {
+        cout << "No accounts found.\n";
+        return;
+    }
 
     showAccounts();
 
+    int index;
 
-    cout << "Select account number: ";
-    cin >> index;
-
-
-    if (index >= 0 && index < accounts.size())
+    while (true)
     {
-        currentAccount = index;
+        cout << "Select account number: ";
 
-        cout << " Account selected!\n"; 
-    }
-    else
-    {
-        cout << "Wrong number!\n";
+        inputValue(index);
+
+        if (index >= 0 &&
+            index < static_cast<int>(accounts.size()))
+        {
+            currentAccount = index;
+            cout << "Account selected!\n";
+            return;
+        }
+
+        cout << "Wrong number! Try again.\n";
     }
 }
-
 
 bool BankSystem::hasActiveAccount() const
 {
     return currentAccount != -1;
 }
-
-
 
 BankAccount& BankSystem::getCurrentAccount()
 {

@@ -1,19 +1,16 @@
 #include <iostream>
 #include "BankSystem.h"
 #include "BankMenu.h"
-
+#include "InputUtils.h"
 
 using namespace std;
-
 
 int main()
 {
     BankSystem system;
     BankMenu menu;
 
-
     int choice;
-
 
     do
     {
@@ -25,30 +22,23 @@ int main()
         cout << "0. Exit\n";
         cout << "Choice: ";
 
-        cin >> choice;
-
-
+        inputValue(choice);
 
         switch (choice)
         {
-
         case 1:
             system.createAccount();
             break;
-
 
         case 2:
             system.showAccounts();
             break;
 
-
         case 3:
             system.selectAccount();
             break;
 
-
         case 4:
-
             if (system.hasActiveAccount())
             {
                 menu.run(system.getCurrentAccount());
@@ -57,23 +47,17 @@ int main()
             {
                 cout << "No account selected!\n";
             }
-
             break;
-
 
         case 0:
             cout << "Goodbye!\n";
             break;
 
-
         default:
             cout << "Invalid choice!\n";
         }
 
-
     } while (choice != 0);
-
-
 
     return 0;
 }

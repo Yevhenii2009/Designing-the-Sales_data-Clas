@@ -1,8 +1,8 @@
 #include <iostream>
 #include "BankMenu.h"
+#include "InputUtils.h"
 
 using namespace std;
-
 
 void BankMenu::showMenu()
 {
@@ -16,7 +16,6 @@ void BankMenu::showMenu()
     cout << "Choice: ";
 }
 
-
 void BankMenu::run(BankAccount& account)
 {
     int choice;
@@ -24,74 +23,74 @@ void BankMenu::run(BankAccount& account)
     do
     {
         showMenu();
-        cin >> choice;
-
+        inputValue(choice);
 
         if (choice == 1)
         {
             account.printInfo();
         }
-
-
         else if (choice == 2)
         {
             double amount;
 
             cout << "Amount to deposit: ";
-            cin >> amount;
+            inputValue(amount);
+
+            while (amount <= 0)
+            {
+                cout << "Enter positive amount: ";
+                inputValue(amount);
+            }
 
             account.deposit(amount);
-            cout <<  "Now " 
-                << account.getOwner() 
-                << " balance is "  
+
+            cout << "Now "
+                << account.getOwner()
+                << " balance is "
                 << account.getBalance()
                 << endl;
         }
-
-
         else if (choice == 3)
         {
             double amount;
 
             cout << "Amount to withdraw: ";
-            cin >> amount;
+            inputValue(amount);
+
+            while (amount <= 0)
+            {
+                cout << "Enter positive amount: ";
+                inputValue(amount);
+            }
 
             account.withdraw(amount);
-            cout << "Now " 
-                << account.getOwner() 
+
+            cout << "Now "
+                << account.getOwner()
                 << " balance is "
                 << account.getBalance()
                 << endl;
         }
-
-
         else if (choice == 4)
         {
             cout << "Owner: "
                 << account.getOwner()
                 << endl;
         }
-
-
         else if (choice == 5)
         {
             cout << "Balance: "
                 << account.getBalance()
                 << endl;
         }
-
-
         else if (choice == 0)
         {
             cout << "Goodbye!\n";
         }
-
-
         else
         {
             cout << "Invalid choice!\n";
         }
-
 
     } while (choice != 0);
 }

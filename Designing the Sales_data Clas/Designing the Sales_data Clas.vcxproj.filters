@@ -38,5 +38,8 @@
     <ClInclude Include="BankSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InputUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
